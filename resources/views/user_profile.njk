@@ -4,7 +4,7 @@
 {% block content %}
   <h1>Saját profil megtekintése</h1>
   <div>
-    <a class="btn btn-info" href="{{ 'recipe_list' | route }}?createdBy={{ currentUser.id }}">Saját receptek megtekintése</a>
+    <a class="btn btn-info" href="{{ 'foglalas_list' | route({id: currentUser.id}) }}">Foglalásaim megtekintése</a>
   </div>
   {% if old('errors') %}
   <br>

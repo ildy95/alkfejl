@@ -14,9 +14,6 @@ class FilmsTableSchema extends Schema {
       table.string('rendezo').notNullable()
       table.text('leiras').notNullable()
       table.boolean('szinkronizalt').defaultTo(true)
-
-      //table.integer('user_id').unsigned().references('id').inTable('users')
-      //table.integer('category_id').unsigned().references('id').inTable('categories')
       table.timestamps()
     })
   }

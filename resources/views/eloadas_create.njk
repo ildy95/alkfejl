@@ -1,5 +1,11 @@
 {% extends 'master' %}
 
+{% block scripts %}
+  <script type="text/javascript" src="/datetimepicker/jquery-1.8.3.min.js" charset="UTF-8"></script>
+{% endblock %}
+
+
+
 {% block title %}Előadás hirdetése{% endblock %}
 {% block content %}
   <h1>Előadás hirdetése</h1>
@@ -14,23 +20,29 @@
   {% endif %}
   <div class="row" onload="betoltHelyek()">
     <div class="col-md-6 col-md-offset-3">
-      <form class="form-horizontal" action="{{ 'do_eloadas_create' | route }}" method="POST" enctype="multipart/form-data">
+      <form class="form-horizontal" action="{{ 'do_eloadas_create' | route }}" method="POST" enctype="multipart/form-data" >
         {{ csrfField }}
         
         <div class="container">
             <div class="form-group">
-                <label for="dtp_input1" class="col-md-2 control-label">Előadás ideje</label>
-                <div class="input-group date form_datetime col-md-5" data-date="2016-11-16T05:25:07Z" data-date-format="yyyy-mm-dd HH:ii:ss" data-link-field="dtp_input1">
+                <label for="dtp_input1" class="col-md-1 control-label">Előadás ideje</label>
+                <div id = "datetimepicker5" class="input-group date form_datetime col-md-4" data-link-field="dtp_input1">
                     <input class="form-control" name="ido" placeholder="Idő" size="16" type="text" id="date-daily" value="{{ old('ido') }}" readonly>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                 </div>
-                
+               <script type="text/javascript">
+                  $(function () {
+                      $('#datetimepicker5').datetimepicker({
+                          locale: 'hu'
+                      });
+                  });
+              </script> 
             </div>
         </div>
 
         <div class="form-group">
-          <label for="inputTerem" class="col-sm-4 control-label">Terem</label>
+          <label for="inputTerem" class="col-sm-2 control-label">Terem</label>
           <div class="col-sm-8">
           <select class="form-control" id="inputTerem" name="terem" placeholder="Hossz" value="{{ old('terem') }}">
             <option> 1</option>
@@ -44,7 +56,7 @@
         </div>
 
         <div class="form-group">
-          <label for="inputFilm" class="col-sm-4 control-label">Film</label>
+          <label for="inputFilm" class="col-sm-2 control-label">Film</label>
           <div class="col-sm-8">
           <select multiple="" class="form-control" id="inputFilm" name="film_id" placeholder="Film"}}">
            {% for film in films %}

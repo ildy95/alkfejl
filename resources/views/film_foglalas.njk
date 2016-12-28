@@ -12,17 +12,16 @@
     </ul>
   </div>
   {% endif %}
-  <div class="row">
-    <form class="form-horizontal" action="{{ 'do_film_foglalas' | route({id: film.id}) }}" method="POST">
-    {% if currentUser %}
+    <div class="row">
+    <form class="form-horizontal" action="{{ 'do_film_foglalas' | route({id: eloadas.id, id2: currentUser.id}) }}" method="POST">
     <div class="col-md-6">
-        <h2>Adatai:</h2>
+      <h2>Adatai:</h2>
         {{ csrfField }}
         <div class="form-group">
-            <label for="inputUsername" class="col-sm-4 control-label">Felhasználónév</label>
-            <div class="col-sm-8">
-                <input type="text" class="form-control" id="inputUsername" name="felhasznalonev" placeholder="Felhasználónév" value="{{ currentUser.felhasznalonev }}">
-            </div>
+          <label for="inputUsername" class="col-sm-4 control-label">Felhasználónév</label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" id="inputUsername" name="felhasznalonev" placeholder="Felhasználónév" value="{{ currentUser.felhasznalonev }}">
+          </div>
         </div>
         <div class="form-group">
           <label for="inputNickname" class="col-sm-4 control-label">Megjelenítési név</label>
@@ -36,62 +35,196 @@
             <input type="text" class="form-control" id="inputEmail" name="email" placeholder="E-mail cím" value="{{ currentUser.email }}">
           </div>
         </div>
-         <div class="form-group">
+        <div class="form-group">
           <div class="col-sm-offset-4 col-sm-8">
             <button type="submit" class="btn btn-success">Foglalás küldése</button>
           </div>
         </div>
     </div>
-    {% endif %}
     <div class="col-md-6">
         <div class="plane">
             <div class="cockpit">
-                <h1>Kérem válasszon helyet!</h1>
+                <h1>Kérem válasszon helyet</h1>
             </div>
-            <div class="exit exit--front fuselage"></div>
-
-            <div>
-                <ol class="cabin fuselage">
-                    <li class="row row--1">
-                        <ol class="seats" type="A">
-                            {% for helyBatch in helyek | batch(6) %}
-                                <ol>
-                                {% for hely in helyBatch %}
-                                    <li class="seat">
-                                        <input type="checkbox" id="{{hely.helynev}}" name="f{{hely.helynev}}" onchange="Function{{hely.helynev}}()"/>
-                                        <label for="{{hely.helynev}}"> {{hely.helynev}} </label>
-                                    </li>
-                                    <script type="text/javascript">
-                                        if ( {{hely.foglalt}} == 1 ) {
-                                            document.getElementById("{{hely.helynev}}").disabled = true
-                                        }
-                                    </script>
-                                {% endfor %}
-                                </ol>
-                            {% endfor %}
-                        </ol>
+            <div class="exit exit--front fuselage">
+                
+            </div>
+            <ol class="cabin fuselage">
+                <li class="row row--1">
+                <ol class="seats" type="A">
+                    <li class="seat">
+                        <input type="checkbox" id="f1A" value=0 name="f1A" onchange="myFunctionf1A()"/>
+                        <label for="f1A">1A</label>
+                    </li>
+                    <li class="seat">
+                        <input type="checkbox" id="f1B" value=0 name="f1B" onchange="myFunctionf1B()"/>
+                        <label for="f1B">1B</label>
+                    </li>
+                    <li class="seat">
+                        <input type="checkbox" id="f1C" value=0 name="f1C" onchange="myFunctionf1C()"/>
+                        <label for="f1C">1C</label>
+                    </li>
+                    <li class="seat">
+                        <input type="checkbox" id="f1D" value=0 name="f1D" onchange="myFunctionf1D()"/>
+                    <label for="f1D">1D</label>
+                    </li>
+                    <li class="seat">
+                        <input type="checkbox" id="f1E" value=0 name="f1E" onchange="myFunctionf1E()"/>
+                        <label for="f1E">1E</label>
+                    </li>
+                    <li class="seat">
+                        <input type="checkbox" id="f1F" value=0 name="f1F" onchange="myFunctionf1F()"/>
+                        <label for="f1F">1F</label>
                     </li>
                 </ol>
-                <div class="exit exit--back fuselage"></div>
+                </li>
+                <li class="row row--2">
+                <ol class="seats" type="A">
+                    <li class="seat">
+                        <input type="checkbox" id="f2A" value=0 name="f2A" onchange="myFunctionf2A()"/>
+                    <label for="f2A">2A</label>
+                    </li>
+                    <li class="seat">
+                        <input type="checkbox" id="f2B" value=0 name="f2B" onchange="myFunctionf2B()"/>
+                    <label for="f2B">2B</label>
+                    </li>
+                    <li class="seat">
+                        <input type="checkbox" id="f2C" value=0 name="f2C" onchange="myFunctionf2C()"/>
+                    <label for="f2C">2C</label>
+                    </li>
+                    <li class="seat">
+                        <input type="checkbox" id="f2D" value=0 name="f2D" onchange="myFunctionf2D()" />
+                    <label for="f2D">2D</label>
+                    </li>
+                    <li class="seat">
+                        <input type="checkbox" id="f2E" value=0 name="f2E" onchange="myFunctionf2E()" />
+                    <label for="f2E">2E</label>
+                    </li>
+                    <li class="seat">
+                        <input type="checkbox" id="f2F" value=0 name="f2F" onchange="myFunctionf2F()" />
+                    <label for="f2F">2F</label>
+                    </li>
+                </ol>
+                </li>
+                <li class="row row--3">
+                <ol class="seats" type="A">
+                    <li class="seat">
+                        <input type="checkbox" id="f3A" value=0 name="f3A" onchange="myFunctionf3A()" />
+                    <label for="f3A">3A</label>
+                    </li>
+                    <li class="seat">
+                        <input type="checkbox" id="f3B" value=0 name="f3B" onchange="myFunctionf3B()" />
+                    <label for="f3B">3B</label>
+                    </li>
+                    <li class="seat">
+                        <input type="checkbox" id="f3C" value=0 name="f3C" onchange="myFunctionf3C()" />
+                    <label for="f3C">3C</label>
+                    </li>
+                    <li class="seat">
+                        <input type="checkbox" id="f3D" value=0 name="f3D" onchange="myFunctionf3D()" />
+                    <label for="f3D">3D</label>
+                    </li>
+                    <li class="seat">
+                        <input type="checkbox" id="f3E" value=0 name="f3E" onchange="myFunctionf3E()" />
+                    <label for="f3E">3E</label>
+                    </li>
+                    <li class="seat">
+                        <input type="checkbox" id="f3F" value=0 name="f3F" onchange="myFunctionf3F()" />
+                    <label for="f3F">3F</label>
+                    </li>
+                </ol>
+                </li>
+                <li class="row row--4">
+                <ol class="seats" type="A">
+                    <li class="seat">
+                        <input type="checkbox" id="f4A" value=0 name="f4A" onchange="myFunctionf4A()" />
+                    <label for="f4A">4A</label>
+                    </li>
+                    <li class="seat">
+                        <input type="checkbox" id="f4B" value=0 name="f4B" onchange="myFunctionf4B()" />
+                    <label for="f4B">4B</label>
+                    </li>
+                    <li class="seat">
+                        <input type="checkbox" id="f4C" value=0 name="f4C" onchange="myFunctionf4C()" />
+                    <label for="f4C">4C</label>
+                    </li>
+                    <li class="seat">
+                        <input type="checkbox" id="f4D" value=0 name="f4D" onchange="myFunctionf4D()" />
+                    <label for="f4D">4D</label>
+                    </li>
+                    <li class="seat">
+                        <input type="checkbox" id="f4E" value=0 name="f4E" onchange="myFunctionf4E()" />
+                    <label for="f4E">4E</label>
+                    </li>
+                    <li class="seat">
+                        <input type="checkbox" id="f4F" value=0 name="f4F" onchange="myFunctionf4F()" />
+                    <label for="f4F">4F</label>
+                    </li>
+                </ol>
+                </li>
+                <li class="row row--5">
+                <ol class="seats" type="A">
+                    <li class="seat">
+                        <input type="checkbox" id="f5A" value=0 name="f5A" onchange="myFunctionf5A()" />
+                    <label for="f5A">5A</label>
+                    </li>
+                    <li class="seat">
+                        <input type="checkbox" id="f5B" value=0 name="f5B" onchange="myFunctionf5B()" />
+                    <label for="f5B">5B</label>
+                    </li>
+                    <li class="seat">
+                        <input type="checkbox" id="f5C" value=0 name="f5C" onchange="myFunctionf5C()" />
+                    <label for="f5C">5C</label>
+                    </li>
+                    <li class="seat">
+                        <input type="checkbox" id="f5D" value=0 name="f5D" onchange="myFunctionf5D()" />
+                    <label for="f5D">5D</label>
+                    </li>
+                    <li class="seat">
+                        <input type="checkbox" id="f5E" value=0 name="f5E" onchange="myFunctionf5E()" />
+                    <label for="f5E">5E</label>
+                    </li>
+                    <li class="seat">
+                        <input type="checkbox" id="f5F" value=0 name="f5F" onchange="myFunctionf5F()" />
+                    <label for="f5F">5F</label>
+                    </li>
+                </ol>
+                </li>
+                </ol>
+            <div class="exit exit--back fuselage">
+                
             </div>
-        </div>
+            </div>    
+            </div>
+        </div>  
     </div>
-    </form>
 </div>
-</div>
-    {% for hely in helyek %}
-        <script>
-        function Function{{hely.helynev}}() {
-                if ( document.getElementById("{{hely.helynev}}").value == 0) {
-                    document.getElementById("{{hely.helynev}}").value = 1;
-                }
-                else {
-                    
-                    document.getElementById("{{hely.helynev}}").value = 0;
-                }
-        }
-        </script>
+        
+      </form>
+    </div>
+  </div>
+
+    {% for f in foglalasok %}
+        {% if f.ea_id == eloadas.id %}
+            <script>
+                document.getElementById("{{f.helyek}}").disabled = true;
+                document.getElementById("{{f.helyek}}").value = 0;
+            </script>
+        {% endif %}
     {% endfor %}
 
+    {% for s in seatNames %}
+        <script>
+            function myFunctionf{{s}}() {
+                if ( document.getElementById("f{{s}}").value == 1) {
+                    document.getElementById("f{{s}}").value = 0;
+                }
+                else {
+                    document.getElementById("f{{s}}").value = 1;
+                }
+            }
+        </script>
+    {% endfor %}
 {% endblock %}
+
 

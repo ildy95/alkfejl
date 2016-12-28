@@ -2,29 +2,59 @@
 
 {% block title %}Kezdőlap{% endblock %}
 {% block content %}
-  <form action="{{ 'recipe_list' | route }}" method="GET">
-    <div class="input-group search-box">
-      <input type="text" class="form-control" placeholder="Keresés..." name="recipeName">
-      <span class="input-group-btn">
-        <button class="btn btn-info" type="submit">Mehet!</button>
-      </span>
-    </div>
-  </form>
-  
- {% for filmBatch in films | batch(3) %}
-  <div class="row">
-    {% for film in filmBatch %}
-    <div class="col-md-4">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <a href="{{ 'film_page' | route({id: film.id}) }}" class="list-group-item">{{ film.cim }}</a> 
+  <h1>Filmek</h1>
+  <form action="{{ 'main' | route }}" method="GET">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="inputFilmName">Film neve</label>
+          <input type="text" class="form-control" placeholder="Film neve" id="inputFilmName" name="filmName" value="{{ filters.filmName }}">
         </div>
-        {% if recipeImage %}
-          <img src="{{ recipeImage }}">
-        {% endif %}
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="inputMufaj">Műfaj</label>
+          <input type="text" class="form-control" placeholder="Műfaj" id="inputMufaj" name="mufaj" value="{{ filters.mufaj }}">
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label>&nbsp;</label>
+          <button class="btn btn-block btn-primary" type="submit">Szűrés</button>
+        </div>
       </div>
     </div>
-    {% endfor %}
-  </div>
+  </form>
+  {% for filmsBatch in films.data | batch(3) %}
+  <div class="row">
+    {% for film in filmsBatch %}
+    <div class="col-md-4">
+      <a class="result-item" href="{{ 'film_page' | route({ id: film.id }) }}">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <center><strong>{{ film.cim }}</strong></center><br>
+          </div>
+        </div>
+      </a>
+    </div>
   {% endfor %}
+  </div>
+  {% else %}
+  Nincs a szűrésnek megfelelő film.
+  {% endfor %}
+  {% if films.lastPage > 1 %}
+  <div class="text-center">
+    <ul class="pagination">
+      {% for page in range(1, films.lastPage + 1) %}
+      {% if page == films.currentPage %}
+      <li class="active">
+        <a href="{{ 'main' | route }}?p={{ page }}&amp;recipeName={{ filters.recipeName }}&amp;category={{ filters.category }}&amp;createdBy={{ filters.createdBy }}">{{ page }}</a>
+      </li>
+      {% else %}
+      <li><a href="{{ 'main' | route }}?p={{ page }}&amp;recipeName={{ filters.recipeName }}&amp;category={{ filters.category }}&amp;createdBy={{ filters.createdBy }}">{{ page }}</a></li>
+      {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
 {% endblock %}

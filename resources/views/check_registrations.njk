@@ -1,0 +1,54 @@
+{% extends 'master' %}
+
+{% block scripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/co/4.1.0/index.min.js">
+    <script src="/scripts/elutasit.js"></script>
+{% endblock %}
+
+{% block title %}Regisztrációk megtekintése{% endblock %}
+{% block content %}
+<div>
+    {{ csrfField | safe }}
+        <table class="table table-striped table-hover " id="tblMain">
+            <thead>
+                <tr>
+                <th>Név</th>
+                <th>Felhasználónév</th>
+                <th>Email cím</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for reg in regisztraciok %}
+                <tr class="active">
+                        <td> {{reg.nev}} </td>
+                        <td> {{reg.felhasznalonev}} </td>
+                        <td> {{reg.email}} </td>
+                        <td><a href="{{ 'elfogad' | route({id: reg.id}) }}">
+                                Elfogad
+                            </a>
+                        </td>
+                        <td><a class="btn btn-danger btn-elutasit" href="{{ 'elutasit' | route({id: reg.id}) }}">
+                            Elutasít
+                            </a>
+                        </td>    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    <span class="help-block"></span>
+</div>
+  <div class="modal fade confirm-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          Biztosan elutasítod a regisztrációt?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success modal-ok" data-dismiss="modal">OK</button>
+          <button type="button" class="btn btn-danger modal-cancel" data-dismiss="modal">Mégse</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    
+{% endblock %}

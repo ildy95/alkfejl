@@ -13,49 +13,58 @@
   </div>
   {% endif %}
   <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      <form class="form-horizontal" action="{{ 'do_film_create' | route }}" method="POST" enctype="multipart/form-data">
+    <div class="col-md-8 col-md-offset-2">
+      <form class="form-horizontal" action="{{ 'do_film_create' | route }}" method="POST" enctype="multipart/form-data" data-toggle="validator">
         {{ csrfField }}
-        <div class="form-group">
+        <div class="form-group has-feedback">
           <label for="inputName" class="col-sm-4 control-label">Film neve</label>
           <div class="col-sm-8">
-            <input type="text" class="form-control" id="inputName" name="cim" placeholder="Film neve" value="{{ old('cim') }}">
+            <input type="text" class="form-control" id="inputName" name="cim" placeholder="Film neve" 
+            value="{{ old('cim') }}" required>
+            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+            <div class="help-block with-errors"></div>
           </div>
         </div>
-        <div class="form-group">
+        <div class="form-group has-feedback">
           <label for="inputName" class="col-sm-4 control-label">Műfaj</label>
           <div class="col-sm-8">
-            <input type="text" class="form-control" id="inputName" name="mufaj" placeholder="Műfaj" value="{{ old('mufaj') }}">
+            <input type="text" class="form-control" id="inputName" name="mufaj" placeholder="Műfaj" 
+            value="{{ old('mufaj') }}" required>
+            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+            <div class="help-block with-errors"></div>
           </div>
         </div>
-        <div class="form-group">
+        <div class="form-group has-feedback">
           <label for="inputName" class="col-sm-4 control-label">Hossz</label>
           <div class="col-sm-8">
-            <input type="text" class="form-control" id="inputName" name="hossz" placeholder="Hossz" value="{{ old('hossz') }}">
+            <input type="text" class="form-control" id="inputName" name="hossz" placeholder="Hossz" 
+            value="{{ old('hossz') }}" required>
           </div>
         </div>
-        <div class="form-group">
+        <div class="form-group has-feedback">
           <label for="inputName" class="col-sm-4 control-label">Korhatár</label>
           <div class="col-sm-8">
-            <input type="text" class="form-control" id="inputName" name="korhatar" placeholder="Korhatár" value="{{ old('korhatar') }}">
+            <input type="text" class="form-control" id="inputName" name="korhatar" placeholder="Korhatár" 
+            value="{{ old('korhatar') }}" required>
           </div>
         </div>
-        <div class="form-group">
+        <div class="form-group has-feedback">
           <label for="inputName" class="col-sm-4 control-label">Rendező</label>
           <div class="col-sm-8">
-            <input type="text" class="form-control" id="inputName" name="rendezo" placeholder="Rendező" value="{{ old('rendezo') }}">
+            <input type="text" class="form-control" id="inputName" name="rendezo" placeholder="Rendező" 
+            value="{{ old('rendezo') }}" required>
           </div>
         </div>
-        <div class="form-group">
+        <div class="form-group has-feedback">
           <label for="inputDescription" class="col-sm-4 control-label">Leírás</label>
           <div class="col-sm-8">
-            <textarea id="inputDescription" class="form-control" name="leiras">{{ old('leiras') }}</textarea>
+            <textarea id="inputDescription" class="form-control" name="leiras" required>{{ old('leiras') }}</textarea>
           </div>
         </div>
         <div class="form-group">
           <label for="inputImage" class="col-sm-4 control-label">Film képe</label>
           <div class="col-sm-8">
-            <input type="file" id="inputImage" name="kep">
+            <input type="file" id="inputImage" name="image">
           </div>
         </div>
         <div class="form-group">

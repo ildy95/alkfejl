@@ -19,9 +19,7 @@
   background: #dfd7ca;
 }
 
-*,
-*:before,
-*:after {
+*, *:before, *:after {
   box-sizing: border-box;
 }
 
@@ -114,7 +112,7 @@ ol {
   opacity: 0;
 }
 .seat input[type=checkbox]:checked + label {
-  background: #FFFF00;
+  background: #bada55;
   -webkit-animation-name: rubberBand;
   animation-name: rubberBand;
   animation-duration: 300ms;
@@ -127,7 +125,6 @@ ol {
 }
 .seat input[type=checkbox]:disabled + label:after {
   content: "X";
-  background: #FF0000;
   text-indent: 0;
   position: absolute;
   top: 4px;
@@ -147,7 +144,7 @@ ol {
   font-weight: bold;
   line-height: 1.5rem;
   padding: 4px 0;
-  background: #00FF00;
+  background: #F42536;
   border-radius: 5px;
   animation-duration: 300ms;
   animation-fill-mode: both;
