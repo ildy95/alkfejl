@@ -240,25 +240,6 @@ class UserController {
 
   * ajaxRegister(request, response) {
     const userData = request.all()
-
-    /*const validation = yield Validator.validateAll(userData, {
-      felhasznalonev: 'required|alpha_numeric|unique:users',
-      email: 'required|email|unique:users',
-      nev: 'required|max:30',
-      jelszo: 'required|min:4',
-      jelszo_ujra: 'required|same:jelszo'
-    })
-
-    if (validation.fails()) {
-      yield request
-        .withOut('jelszo', 'jelszo_ujra')
-        .andWith({ errors: validation.messages() })
-        .flash()
-
-      response.send({ success: false })
-	    return;
-	  
-    }*/
 	
     const confirmation = new Confirmation()
     confirmation.felhasznalonev = userData.felhasznalonev

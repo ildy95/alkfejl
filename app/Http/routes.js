@@ -52,7 +52,6 @@ Route.group('ajax', function () {
   Route.post('/login', 'UserController.ajaxLogin')
   Route.post('/register', 'UserController.ajaxRegister')
   Route.post('/film/create', 'FilmController.ajaxCreateFilm')
-  Route.post('/eloadas/create', 'FilmController.ajaxCreateEa')
   Route.delete('/film/:id/delete', 'FilmController.ajaxDelete')
   Route.delete('/registrations/:id/elutasit', 'UserController.ajaxElutasit')
 }).prefix('/ajax')

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:3333/" />
+<title>modifyFilmTest</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">modifyFilmTest</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=btnAddFilm</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>2000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=inputName</td>
+	<td>A fegyvertelen katona</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@id='inputName'])[2]</td>
+	<td>Akció</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=hossz</td>
+	<td>120</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=korhatar</td>
+	<td>16</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=rendezo</td>
+	<td>Nemtudom</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=inputDescription</td>
+	<td>Nemtudom</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=button.btn.btn-success</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//div[2]/div[3]/a/div/div</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=h1</td>
+	<td>A fegyvertelen katona</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=p</td>
+	<td>Akció</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//p[2]</td>
+	<td>120</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//p[3]</td>
+	<td>16</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//p[4]</td>
+	<td>Nemtudom</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//p[5]</td>
+	<td>Nemtudom</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Film szerkesztése</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=inputRendezo</td>
+	<td>Mostmártudom</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=inputDescription</td>
+	<td>Most már tudom</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=button.btn.btn-success</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//p[4]</td>
+	<td>Mostmártudom</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//p[5]</td>
+	<td>Most már tudom</td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

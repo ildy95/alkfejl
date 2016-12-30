@@ -12,7 +12,7 @@
     <link href="/datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
     <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/sandstone/bootstrap.min.css" rel="stylesheet" integrity="sha384-G3G7OsJCbOk1USkOY4RfeX1z27YaWrZ1YuaQ5tbuawed9IoreRDpWpTkZLXQfPm3" crossorigin="anonymous">
     <link href="/style.css" rel="stylesheet">
-     <script type="text/javascript" src="/datetimepicker/jquery-1.8.3.min.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="/datetimepicker/jquery-1.8.3.min.js" charset="UTF-8"></script>
   </head>
  <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -31,7 +31,7 @@
             <li><a href="{{ 'eloadasok_page' | route }}">Előadások böngészése</a></li>
             {% if currentUser.admin == 1 %}
               <li><a id="btnAddFilm" href="{{ 'film_create' | route }}">Film felvétele</a></li>
-              <li><a id="btnAddEa" href="{{ 'eloadas_create' | route }}">Előadás hirdetése</a></li>
+              <li><a href="{{ 'eloadas_create' | route }}">Előadás hirdetése</a></li>
               <li><a href="{{ 'check_registrations' | route }}">Regisztrációk megtekintése</a></li>
             {% endif %}
           </ul>
@@ -60,7 +60,6 @@
     <script src="/scripts/popup_login.js"></script>
     <script src="/scripts/popup_register.js"></script>
     <script src="/scripts/popup_addFilm.js"></script>
-    <script src="/scripts/popup_addEa.js"></script>
     <script type="text/javascript" src="/datetimepicker/bootstrap.min.js"></script>
     <script type="text/javascript" src="/datetimepicker/bootstrap-datetimepicker.js" charset="UTF-8"></script>
     <script type="text/javascript" src="/datetimepicker/bootstrap-datetimepicker.hu.js" charset="UTF-8"></script>

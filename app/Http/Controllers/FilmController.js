@@ -505,8 +505,6 @@ class FilmController {
 
   * ajaxDelete(request, response) {
     const id = request.param('id');
-    console.log('AAAAAAAAALMA')
-    console.log(id);
     const film = yield Film.find(id);
     
       if (film) {    
@@ -541,25 +539,6 @@ class FilmController {
         yield film.save()
         //yield filmImage.move(Helpers.publicPath() + '/images', `${film.id}.jpg`)
 
-        response.ok({
-            success: true
-        })
-        return
-    }
-
-    * ajaxCreateEa(request, response) {
-        const eaData = request.all()
-
-        var res = eaData.film_id.split(".");
-        eaData.film_id = res[0]
-
-        const ea = new Eloadas()
-        ea.ido = eaData.ido
-        ea.terem = eaData.terem
-        ea.film_id = eaData.film_id
-
-        yield ea.save()
-        
         response.ok({
             success: true
         })

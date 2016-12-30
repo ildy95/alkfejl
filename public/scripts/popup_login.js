@@ -1,10 +1,5 @@
 $('#btnLogin').on('click', function (e) {  
-  e.preventDefault()  
-
-  let $modal = $('.modal')  
-  const hasModal = $modal.length  
-
-  console.log(hasModal)
+  e.preventDefault() 
 
     $modal = $(`  
       <div class="modal fade confirm-modal" tabindex="-1" role="dialog" id="loginModal">  
@@ -39,10 +34,8 @@ $('#btnLogin').on('click', function (e) {
             headers: { 'csrf-token': $('[name="_csrf"]').val() }  
           })  
         ).then(json => {  
-          if (json.success) {  
-            $('#navbar').load('/ #navbar', function () {  
-              $modal.modal('hide')  
-            })  
+          if (json.success) {
+              location.assign('/')
           }
           else {  
             $errorContainer.text('Hibás adatok!').show()  
